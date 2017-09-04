@@ -1,4 +1,4 @@
-﻿package model.pagingutil;
+﻿package model;
 
 public class PagingUtil {
 
