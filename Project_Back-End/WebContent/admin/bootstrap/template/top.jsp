@@ -29,8 +29,8 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#"style="color:red; font-size: 15px; font-weight:bold">도서자료 등록</a></li>
-						<li><a href="<c:url value='/admin/bootstrap/datasearch/ElectronicLib.jsp' />">도서자료 검색</a></li>
+						<li><a href="<c:url value='/ElectronicLib.do' />">도서자료 등록</a></li>
+						<li><a href="<c:url value='/ElectronicLib/List.do' />">도서자료 검색</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
