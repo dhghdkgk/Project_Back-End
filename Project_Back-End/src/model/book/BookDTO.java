@@ -1,20 +1,20 @@
 package model.book;
 
 public class BookDTO {
-	private int book_no;
-	private String book_title;
-	private String book_writer;
-	private String book_shape;
-	private String book_trans;
-	private String book_isbn;
-	private String book_pubplace;
-	private String book_pubdate;
-	private String book_type;
-	private String book_mark;
-	private String book_pubmatter;
-	private String book_abstract;
-	private String book_img;
-	private String book_regidate;
+	private int book_no;//책번호
+	private String book_title;//책이름
+	private String book_writer;//저자
+	private String book_shape;//모양
+	private String book_trans;//책임표시사항
+	private String book_isbn;//isbn
+	private String book_pubplace;//발행처
+	private String book_pubdate;//발행일
+	private String book_type;//분류
+	private String book_mark;//청구기호
+	private String book_pubmatter;//바행사항
+	private String book_abstract;//초록
+	private String book_img;//이미지
+	private String book_regidate;//등록일
 
 	public BookDTO() {
 	}

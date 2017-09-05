@@ -46,7 +46,7 @@
 		<!-- 아래의 실제 내용 표시 -->
 		<div>
 			<div class="col-md-6">
-				<form id="frm" action="/ElectronicLib.do" method="post">
+				<form id="frm" action="<c:url value='/ElectronicLib.do' />" method="post" enctype="multipart/form-data">
 					<table class="table table-striped">
 						<input type="hidden" name="mode" value="insert">
 						<tr>
@@ -118,6 +118,10 @@
 						<tr>
 							<td>서평</td>
 							<td><textarea id="recommend" rows="" cols=""></textarea></td>
+						</tr>
+						<tr>
+							<td>표지</td>
+							<td><input type="file" name="book_img"></td>
 						</tr>
 						<tr>
 							<td colspan="2">

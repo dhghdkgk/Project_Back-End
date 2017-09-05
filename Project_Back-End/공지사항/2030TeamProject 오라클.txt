@@ -1,0 +1,49 @@
+CREATE USER TEAM IDENTIFIED BY 2030;
+
+
+GRANT CONNECT, RESOURCE TO TEAM;
+
+
+create sequence seq_incnum nocycle nocache;
+
+
+//멤버테이블 인설트값
+  INSERT INTO MEMBER_TABLE VALUES('KIM','김길동','2017-11-01','1234','직업','이메일','본인확인힌트','답','주소','01047230449','시각장애인서비스','장기열람증','탈퇴',SYSDATE);
+
+ INSERT INTO MEMBER_TABLE VALUES('MIN','민길동','2017-11-01','1234','직업','이메일','본인확인힌트','답','주소','01047230449','시각장애인서비스','장기열람증','탈퇴',SYSDATE);
+
+
+ INSERT INTO MEMBER_TABLE VALUES('LEE','이길동','2017-11-01','1234','직업','이메일','본인확인힌트','답','주소','01047230449','시각장애인서비스','장기열람증','탈퇴',SYSDATE);
+
+
+//QA_TABLE(묻고답하기)
+INSERT INTO QA_TABLE VALUES(1,'KIM','일반','SGH01101@NAVER.COM','010472',DEFAULT,DEFAULT,DEFAULT,'제목','내용','첨푸파일',1,DEFAULT,SYSDATE,'김길동');
+
+INSERT INTO QA_TABLE VALUES(2,'KIM','일반','SGH01101@NAVER.COM','010472',DEFAULT,DEFAULT,DEFAULT,'제목','내용','첨푸파일',1,DEFAULT,SYSDATE,'김길동');
+
+ INSERT INTO QA_TABLE VALUES(3,'MIN','일반','SGH01101@NAVER.COM','010472',DEFAULT,DEFAULT,DEFAULT,'제목','내용','첨푸파일',1,DEFAULT,SYSDATE,'김길동');
+
+ INSERT INTO QA_TABLE VALUES(4,'MIN','일반','SGH01101@NAVER.COM','010472',DEFAULT,DEFAULT,DEFAULT,'제목','내용','첨푸파일',1,DEFAULT,SYSDATE,'김길동');
+
+
+
+Otherbook_table(비치희망도서)
+INSERT INTO OTHERBOOK_TABLE VALUES(1,'1','KIM','제목여','저자요','그룹요','미래창조부','자료구분',12300,'접수중','2017-11-2'
+ ,'김길동','SGH01101','010-3342-3321',SYSDATE);
+
+
+ INSERT INTO OTHERBOOK_TABLE VALUES(2,'1','KIM','제목여','저자요','그룹요','미래창조부','자료구분',12300,'접수중','2017-11-2'
+ ,'김길동','SGH01101','010-3342-3321',SYSDATE);
+
+
+
+ INSERT INTO OTHERBOOK_TABLE VALUES(3,'1','MIN','제목여','저자요','그룹요','미래창조부','자료구분',12300,'접수중','2017-11-2'
+ ,'김길동','SGH01101','010-3342-3321',SYSDATE);
+
+
+Outer_concert_table(야외공연장)
+insert into outer_concert_table values(seq_incnum.NEXTVAL,'KIM','콘서트명','김길동',20,'010-1111-1111','aa@naver.com','내용입니다','진행일정','장비','프로필','2017-12-12','요청사항',sysdate);
+
+insert into outer_concert_table values(seq_incnum.NEXTVAL,'MIN','콘서트명','민길동',20,'010-1111-1111','aa@naver.com','내용입니다','진행일정','장비','프로필','2017-12-12','요청사항',sysdate);
+
+insert into outer_concert_table values(seq_incnum.NEXTVAL,'LEE','콘서트명','이길동',20,'010-1111-1111','aa@naver.com','내용입니다','진행일정','장비','프로필','2017-12-12','요청사항',sysdate);

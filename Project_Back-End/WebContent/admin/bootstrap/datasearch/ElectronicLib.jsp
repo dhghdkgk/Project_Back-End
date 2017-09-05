@@ -54,6 +54,7 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
+							<th>번호</th>
 							<th>표지</th>
 							<th>제목</th>
 							<th>저자</th>
@@ -65,35 +66,39 @@
 					</thead>
 
 					<tbody>
-						<tr>
-							<td><img src="" alt="해리포터와 마법사의 돌"></td>
-							<td><a href="ElectronicLib.do?no=1&nowpage=1">해리포터와 마법사의 돌</a></td>
-							<td>케이트 글래스먼 외 15인</td>
-							<td>옮긴이</td>
-							<td>823.009 -16-1 </td>
-							<td>인문자연과학자료실(314호)</td>
-							<td>2017-08-28</td>
-						</tr>
-						<tr>
-							<td><img src="" alt="해리포터와 마법사의 돌"></td>
-							<td>해리포터와 마법사의 돌</td>
-							<td>케이트 글래스먼 외 15인</td>
-							<td>옮긴이</td>
-							<td>823.009 -16-1 </td>
-							<td>인문자연과학자료실(314호)</td>
-							<td>2017-08-28</td>
-						</tr>
-						<tr>
-							<td><img src="" alt="해리포터와 마법사의 돌"></td>
-							<td>해리포터와 마법사의 돌</td>
-							<td>케이트 글래스먼 외 15인</td>
-							<td>옮긴이</td>
-							<td>823.009 -16-1 </td>
-							<td>인문자연과학자료실(314호)</td>
-							<td>2017-08-28</td>
-						</tr>
+						<c:choose>
+							<c:when test="${empty list }">
+								<tr bgcolor="white" align="center">
+									<td colspan="7">등록된 자료가 없어요</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="item" items="${list }" varStatus="loop">
+									<tr bgcolor="white" align="center">
+										<td>${totalRecordCount - (((nowPage  - 1) * pageSize ) + loop.index)}</td>
+										<td>${item.book_img }</td>
+										<td align="left">
+											<a href="<c:url value='/ElectronicLib/View.do?no=${item.book_no }' />">${item.book_title }</a>
+										</td>
+										<td>${item.book_writer }</td>
+										<td>${item.book_trans }</td>
+										<td>자료실</td>
+										<td>${item.book_mark }</td>
+										<%-- <td><a onclick="updateDowncount(${loop.count })" href='<c:url value="/DATAROOM/Download.do?filename=${my:urlEncoding(item.attachedfile) }&no=${item.no}"/>'>${item.attachedfile}</a></td>
+										<td><span id="downcount${loop.count }">${item.downloadcount }</span></td> --%>
+										<td>${item.book_regidate }</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+
 					</tbody>
 				</table>
+		                      <table width="100%">
+		                        <tr align="center">
+		                          <td>${pagingString }</td>
+		                        </tr>
+		                      </table>
 			</div>
 		</div>
 
