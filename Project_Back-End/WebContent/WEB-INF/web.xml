@@ -1,41 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>JSPPractice</display-name>
-
-  <!-- 컨텍스트 초기화 파라미터 등록 -->
   <context-param>
-  	<param-name>ORACLE_DRIVER</param-name>
-  	<param-value>oracle.jdbc.OracleDriver</param-value>
+    <param-name>ORACLE_DRIVER</param-name>
+    <param-value>oracle.jdbc.OracleDriver</param-value>
   </context-param>
   <context-param>
-  	<param-name>ORACLE_URL</param-name>
-  	<param-value>jdbc:oracle:thin://localhost:1521</param-value>
-  </context-param>
-  
-  <!-- 페이지용 컨텍스트 초기화 파라미터 -->
-  <context-param>
-  	<param-name>PAGE_SIZE</param-name>
-  	<param-value>2</param-value>
+    <param-name>ORACLE_URL</param-name>
+    <param-value>jdbc:oracle:thin://localhost:1521</param-value>
   </context-param>
   <context-param>
-  	<param-name>BLOCK_PAGE</param-name>
-  	<param-value>3</param-value>
+    <param-name>PAGE_SIZE</param-name>
+    <param-value>2</param-value>
   </context-param>
-  
-  <!-- 해당 JSP페이지에서만 사용가능한 서블릿 초기화 파라미터 등록
-       (효용도 떨어짐)
-   -->
-   <!-- <servlet>
-
-  <servlet-name>RecommandList</servlet-name>
-  <servlet-class>controller.Recommend.ListController</servlet-class>
+  <context-param>
+    <param-name>BLOCK_PAGE</param-name>
+    <param-value>3</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>ElectronicLib</servlet-name>
+    <servlet-class>controller.book.ElecController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DataRoomList</servlet-name>
-
-    <url-pattern>/PROJECT/List.do</url-pattern>
-  </servlet-mapping> -->
-  
-  
-  
+    <servlet-name>ElectronicLib</servlet-name>
+    <url-pattern>/ElectronicLib.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ElectronicLibList</servlet-name>
+    <servlet-class>controller.book.ElecListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ElectronicLibList</servlet-name>
+    <url-pattern>/ElectronicLib/List.do</url-pattern>
+  </servlet-mapping>
 </web-app>
