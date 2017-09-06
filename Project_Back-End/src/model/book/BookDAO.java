@@ -29,20 +29,18 @@ public class BookDAO {
 		catch (NamingException e) {e.printStackTrace();}//catch
 		catch (SQLException e) {e.printStackTrace();}//catch
 	}///////////////////////
-		// 자원반납용]
-
-	public void close() {
-		try {
-			if (rs != null)
-				rs.close();
-			if (psmt != null)
-				psmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}///////////////// close()
+	
+	//자원반납용-사용한 커넥션 객체를 다시 풀에 반납
+	public void close(){
+		try{
+			//메모리 해제
+			if(rs   != null) rs.close();
+			if(psmt != null) psmt.close();
+			//커넥션 풀에 커넥션 객체 반납-메모리 해제X
+			if(conn != null) conn.close();
+		}//try
+		catch(Exception e){e.printStackTrace();}//catch
+	}//close
 
 	/*
 	 * public List<AnswerDTO> selectList() {
