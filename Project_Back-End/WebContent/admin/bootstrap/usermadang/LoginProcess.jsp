@@ -13,8 +13,8 @@
 	String user = request.getParameter("user").trim();
 	String pass = request.getParameter("pass").trim();
 	
-
 	QaDAO dao = new QaDAO(application);
+	
 	boolean flag = dao.isMember(user, pass);
 	dao.close();
 	if(flag){	

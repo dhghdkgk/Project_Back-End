@@ -1,7 +1,7 @@
   
 
 
-<%@page import="model.pagingutil.PagingUtil"%>
+<%@page import="model.PagingUtil"%>
 <%@page import="model.otherbook.OtherBookDTO"%>
 <%@page import="model.otherbook.OtherBookDAO"%>
 <%@page import="java.util.List"%>

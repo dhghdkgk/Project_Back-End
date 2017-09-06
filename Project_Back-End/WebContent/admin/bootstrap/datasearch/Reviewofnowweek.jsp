@@ -33,8 +33,10 @@
 			<h1>금주의 서평</h1>
 		</div>
 		<div class="search">
-			&nbsp; &nbsp; <span>주차별 보기</span>
-			&nbsp;&nbsp;&nbsp;&nbsp;<select>
+			<form action="/Reviewofnowweek.do" method="post">
+				<input type="hidden" name="mode" value="search" />
+				&nbsp; &nbsp; <span>주차별 보기</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;<select>
 				<option value="전체">전체</option>
 				<option value="8월 4째주">8월 4째주</option>
 				<option value="8월 3째주">8월 3째주</option>
@@ -60,6 +62,7 @@
 			<input type="text" size="15"/>
 			<button type="button" class="btn btn-sm btn-info">검색</button>
 			<button type="button" class="btn btn-sm btn-info">전체보기</button>
+			</form>
 		</div>
 		<!-- 아래의 실제 내용 표시 -->
 		<div>
@@ -79,40 +82,36 @@
 					</thead>
 
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td><a href="<c:url value='ReviewofnowweekOk.jsp'/>">원하는 곳에서 일하고 살아갈 자유, 디지털 노마드</a></td>
-							<td>사회</td>
-							<td></td>
-							<td>도유진</td>
-							<td>김태현</td>
-							<td>서울대학교 법학전문대학원</td>
-							<td>2017-12-12</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td><a href="<c:url value='ReviewofnowweekOk.jsp'/>">원하는 곳에서 일하고 살아갈 자유, 디지털 노마드</a></td>
-							<td>사회</td>
-							<td></td>
-							<td>도유진</td>
-							<td>김태현</td>
-							<td>서울대학교 법학전문대학원</td>
-							<td>2017-12-12</td>
-
-						</tr>
-						<tr>
-							<td>3</td>
-							<td><a href="<c:url value='ReviewofnowweekOk.jsp'/>">원하는 곳에서 일하고 살아갈 자유, 디지털 노마드</a></td>
-							<td>사회</td>
-							<td></td>
-							<td>도유진</td>
-							<td>김태현</td>
-							<td>서울대학교 법학전문대학원</td>
-							<td>2017-12-12</td>
-
-						</tr>
+						<c:choose>
+							<c:when test="${empty list }">
+								<tr bgcolor="white" align="center">
+									<td colspan="7">등록된 자료가 없어요</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="item" items="${list}" varStatus="loop">
+									<tr>
+										<td>${totalRecordCount - (((nowPage  - 1) * pageSize ) + loop.index)}</td>
+										<td>${item.review_no }</td>
+										<td><a href="<c:url value='/ReviewofnowweekOk.do?no=${item.review_no }' />">${item.book_title }</a></td>
+										<td>${item.book_type }</td>
+										<td></td>
+										<td>${item.book_writer }</td>
+										<td>${item.review_reviewer }</td>
+										<td>${item.book_pubplace}</td>
+										<td>${item.book_pubdate }</td>
+									</tr>
+									</c:forEach>
+							</c:otherwise>
+						</c:choose>
+						
 					</tbody>
 				</table>
+				<table width="100%">
+                  <tr align="center">
+                    <td>${pagingString }</td>
+                  </tr>
+                </table>
 			</div>
 		</div>
 		

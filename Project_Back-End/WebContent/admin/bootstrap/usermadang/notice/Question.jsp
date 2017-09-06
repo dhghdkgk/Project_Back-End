@@ -1,6 +1,6 @@
 
 
-<%@page import="model.pagingutil.PagingUtil"%>
+<%@page import="model.PagingUtil"%>
 <%@page import="model.qa.QaDTO"%>
 <%@page import="model.qa.QaDAO"%>
 <%@page import="java.util.HashMap"%>

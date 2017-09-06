@@ -56,7 +56,7 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="<c:url value='/admin/bootstrap/datasearch/Reviewofnowweek.jsp' />">금주의 서평</a></li>
+						<li><a href="<c:url value='/Reviewofnowweek.do' />">금주의 서평</a></li>
 						<li><a href="<c:url value='/admin/bootstrap/datasearch/Recommandbook.jsp' />">오늘의 책</a></li>
 					</ul>
 				</li>

@@ -53,4 +53,34 @@
   	<param-name>JNDI_ROOT</param-name>
   	<param-value>java:comp/env</param-value>
   </context-param>
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>Review</servlet-name>
+    <servlet-class>controller.Review.ListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Review</servlet-name>
+    <url-pattern>/Reviewofnowweek.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ReviewList</servlet-name>
+    <servlet-class>controller.Review.ListOneController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewList</servlet-name>
+    <url-pattern>/ReviewofnowweekOk.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ReviewEdit</servlet-name>
+    <servlet-class>controller.Review.EditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewEdit</servlet-name>
+    <url-pattern>/ReviewofnowweekEdit.do</url-pattern>
+  </servlet-mapping>
 </web-app>

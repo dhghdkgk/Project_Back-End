@@ -46,23 +46,24 @@ public class OuterDao {
 		
 		
 		//전체 목록 가져오기]
-		public List<OuterDto> selectList(){
+		public List<OuterDto> selectList(Map<String, Object> map){
 			List<OuterDto> records = new Vector<OuterDto>();
 			
 			//페이징 미 적용
-			String sql="SELECT O.*,M.MEMBER_NAME FROM OUTER_CONCERT_TABLE O JOIN MEMBER_TABLE M ON O.MEMBER_ID = M.MEMBER_ID ORDER BY OUTER_NO DESC";
+			//String sql="SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT O.*,M.MEMBER_NAME FROM OUTER_CONCERT_TABLE O JOIN MEMBER_TABLE M ON O.MEMBER_ID = M.MEMBER_ID";
 			
 			//페이징 적용-구간쿼리로 변경
-			/*String sql="SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT B.*,M.NAME FROM BBS B JOIN MEMBER M ON B.ID=M.ID ";
+			String sql="SELECT * FROM (SELECT T.*, ROWNUM R FROM (SELECT O.*,M.MEMBER_NAME FROM OUTER_CONCERT_TABLE O JOIN MEMBER_TABLE M ON O.MEMBER_ID = M.MEMBER_ID";
 			//검색용 쿼리 추가
 			if(map.get("searchWord") !=null){
 				sql+=" WHERE "+map.get("searchColumn")+ " LIKE '%"+map.get("searchWord")+"%' ";
 			}		
-			sql+=" ORDER BY NO DESC) T) WHERE R BETWEEN ? AND ?";*/
+			sql+=" ORDER BY OUTER_NO DESC) T) WHERE R BETWEEN ? AND ?";
 			
 			try {
 				psmt = conn.prepareStatement(sql);
-				
+				psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+				psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
 				//페이징을 위한 시작 및 종료 rownum설정]
 				
 				rs = psmt.executeQuery();
@@ -90,6 +91,27 @@ public class OuterDao {
 			}		
 			return records;
 		}/////////////////selectList
+		
+		public int getTotalRecordCount(Map<String, Object> map) {
+			int totalCount = 0;
+			String sql = "SELECT COUNT(*) FROM OUTER_CONCERT_TABLE O JOIN MEMBER_TABLE M ON O.MEMBER_ID = M.MEMBER_ID";
+			// 검색용 쿼리 추가
+			if (map.get("searchWord") != null) {
+				sql += " WHERE " + map.get("searchColumn") + " LIKE '%" + map.get("searchWord") + "%' ";
+			}
+
+			try {
+				psmt = conn.prepareStatement(sql);
+
+				rs = psmt.executeQuery();
+				rs.next();
+				totalCount = rs.getInt(1);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return totalCount;
+		}/////////////// getTotalRecordCount
 		
 		
 		public OuterDto selectOne(String no) {

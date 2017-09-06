@@ -1,9 +1,7 @@
+<%-- <%@page import="model.VisitDao"%>
+<%@page import="model.VisitDto"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="model.VisitDao"%>
-<%@page import="model.VisitDto"%>
-<%@page import="model.OuterDto"%>
-<%@page import="model.OuterDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -63,3 +61,4 @@
 	
 	
 
+ --%>

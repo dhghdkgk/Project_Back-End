@@ -46,17 +46,17 @@
 					<tr>
 						<th scope="row">서평</th>
 						<td colspan="3">
-							<div class="box01">인간을 위한 노동자, 디지털 노마드</div>
+							${dto.review_review }
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">서평자</th>
 						<td>
-							<div class="box01">김태현</div>
+							${dto.review_reviewer }
 						</td>
 						<th scope="row">발행사항</th>
 						<td>
-							<div class="box01">342 (2017-08-23)</div>
+							${dto.book_pubmatter }
 						</td>
 					</tr>
 				</table>
@@ -64,56 +64,39 @@
 			
 			<table class="table table-striped">
 				<tr>
-					<td>청구기호: 기호입니다</td>
+					<td>청구기호: ${dto.book_mark }</td>
 				</tr>
 				<tr>
 					<td>
-						<div>서명: 이름</div>
+						<div>서명: ${dto.book_name }</div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div>편·저자: 저자</div>
+						<div>편·저자: ${dto.book_writer }</div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div>발행사항: 발행사항</div>
+						<div>발행사항: ${dto.book_pubmatter }</div>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<div>PDF: aa</div>
+						<div>PDF: ${dto.review_pdf }</div>
 					</td>
 				</tr>
 				
 				<tr>
 					<td>
 					목차
-					목차입니다<br/>
-					목차입니다<br/>
-					목차입니다<br/>
-					목차입니다<br/>
-					목차입니다<br/>
-					목차입니다<br/>
-					목차입니다<br/>
-					목차입니다<br/>
-					목차입니다
+					${dto.list_content }
 					</td>
 				</tr>
 				<tr>
 					<td>
 					서평
-					서평입니다<br/>
-					서평입니다<br/>
-					서평입니다<br/>
-					서평입니다<br/>
-					서평입니다<br/>
-					서평입니다<br/>
-					서평입니다<br/>
-					서평입니다<br/>
-					서평입니다<br/>
-					서평입니다<br/>
+					${dto.review_review }
 					</td>
 				</tr>
 				
@@ -122,10 +105,12 @@
 				
 			</table>
 			
-		<div align="right">
-			<a href="<c:url value='Reviewofnowweek.jsp'/>"><button
-					type="button" class="btn btn-sm btn-info">목록</button></a>
-		</div>
+		<span style="text-align:right">
+		<a href="<c:url value='/ReviewofnowweekEdit.do?no=${dto.review_no}'/>"><button type="button" class="btn btn-sm btn-info">수정</button></a>
+		</span>
+		<span style="text-align:right">
+		<a href="<c:url value='/Reviewofnowweek.do'/>"><button type="button" class="btn btn-sm btn-info">목록</button></a>
+		</span>
 
 	</div>
 	<!-- /내용끝 -->

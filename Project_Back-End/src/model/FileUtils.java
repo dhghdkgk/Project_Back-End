@@ -25,7 +25,7 @@ public class FileUtils {
 			mr = new MultipartRequest(
 					req,
 					saveDirectory,
-					1024 * 500,
+					1024 * 5000,
 					"UTF-8",
 					new DefaultFileRenamePolicy()
 					);

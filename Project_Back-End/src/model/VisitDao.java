@@ -16,6 +16,8 @@ import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
+import model.outer.OuterDto;
+
 
 
 public class VisitDao {
