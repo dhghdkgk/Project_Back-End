@@ -38,7 +38,7 @@ public class ElecController extends HttpServlet {
 			String pubmatter;
 			String book_abstract;
 			String book_img;
-
+			
 			MultipartRequest mr = FileUtils.upload(req, req.getServletContext().getRealPath("/Upload/Book"));
 
 			int sucorfail;// DB입력 성공시에는 1, 실패시0, 파일용량 초과시에는 -1

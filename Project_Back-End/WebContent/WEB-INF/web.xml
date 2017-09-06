@@ -7,7 +7,7 @@
   </context-param>
   <context-param>
     <param-name>ORACLE_URL</param-name>
-    <param-value>jdbc:oracle:thin://localhost:1521</param-value>
+    <param-value>jdbc:oracle:thin://192.168.0.22:1521</param-value>
   </context-param>
   <context-param>
     <param-name>PAGE_SIZE</param-name>
@@ -33,4 +33,24 @@
     <servlet-name>ElectronicLibList</servlet-name>
     <url-pattern>/ElectronicLib/List.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ElectronicLibView</servlet-name>
+    <servlet-class>controller.book.ElecViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ElectronicLibView</servlet-name>
+    <url-pattern>/ElectronicLib/View.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ElectronicLibEdit</servlet-name>
+    <servlet-class>controller.book.ElecEditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ElectronicLibEdit</servlet-name>
+    <url-pattern>/ElectronicLib/Edit.do</url-pattern>
+  </servlet-mapping>
+   <context-param>
+  	<param-name>JNDI_ROOT</param-name>
+  	<param-value>java:comp/env</param-value>
+  </context-param>
 </web-app>

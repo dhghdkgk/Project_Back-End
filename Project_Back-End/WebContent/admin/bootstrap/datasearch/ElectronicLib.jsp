@@ -75,8 +75,8 @@
 							<c:otherwise>
 								<c:forEach var="item" items="${list }" varStatus="loop">
 									<tr bgcolor="white" align="center">
-										<td>${totalRecordCount - (((nowPage  - 1) * pageSize ) + loop.index)}</td>
-										<td>${item.book_img }</td>
+										<td style="vertical-align: middle;">${totalRecordCount - (((nowPage  - 1) * pageSize ) + loop.index)}</td>
+										<td><img src="<c:url value='/Upload/Book/${item.book_img }' />" style="width: 30px; height: 50px;"></td>
 										<td align="left">
 											<a href="<c:url value='/ElectronicLib/View.do?no=${item.book_no }' />">${item.book_title }</a>
 										</td>
@@ -84,8 +84,6 @@
 										<td>${item.book_trans }</td>
 										<td>자료실</td>
 										<td>${item.book_mark }</td>
-										<%-- <td><a onclick="updateDowncount(${loop.count })" href='<c:url value="/DATAROOM/Download.do?filename=${my:urlEncoding(item.attachedfile) }&no=${item.no}"/>'>${item.attachedfile}</a></td>
-										<td><span id="downcount${loop.count }">${item.downloadcount }</span></td> --%>
 										<td>${item.book_regidate }</td>
 									</tr>
 								</c:forEach>

@@ -125,7 +125,7 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<input type="submit" class="" value="등록">
+								<input type="submit" class="btn btn-sm btn-info" value="등록">
 								<input type="reset" class="btn btn-sm btn-info" value="취소">
 								<a class="btn btn-sm btn-info" href="javascript:list()">목록</a>
 							</td>

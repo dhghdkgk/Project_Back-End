@@ -8,7 +8,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletContext;
+import javax.sql.DataSource;
 
 public class BookDAO {
 	private Connection conn;
@@ -18,14 +22,12 @@ public class BookDAO {
 	// 생성자]
 	public BookDAO(ServletContext context) {
 		try {
-
-			// 드라이버 로딩]
-			Class.forName(context.getInitParameter("ORACLE_DRIVER"));
-			// 데이타베이스 연결]
-			conn = DriverManager.getConnection(context.getInitParameter("ORACLE_URL"), "TEAM", "2030");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			Context ctx = new InitialContext();
+			DataSource source = (DataSource)ctx.lookup(context.getInitParameter("JNDI_ROOT")+"/team/back");
+			conn = source.getConnection();
+		}//try
+		catch (NamingException e) {e.printStackTrace();}//catch
+		catch (SQLException e) {e.printStackTrace();}//catch
 	}///////////////////////
 		// 자원반납용]
 
@@ -110,7 +112,7 @@ public class BookDAO {
 				dto.setBook_pubmatter(rs.getString(11));
 				dto.setBook_abstract(rs.getString(12));
 				dto.setBook_img(rs.getString(13));
-				dto.setBook_regidate(rs.getString(14));
+				dto.setBook_regidate(rs.getDate(14).toString());
 				list.add(dto);
 			}//while
 		}//try
@@ -135,6 +137,36 @@ public class BookDAO {
 		}
 		;// catch
 		return total;
-	}// getTotalRecordCount
+	}// getTotalRecordCount//상세보기용
+	
+	public BookDTO selectOne(String no) {
+		BookDTO dto = null;
+		String sql = "SELECT * FROM BOOK_TABLE WHERE BOOK_NO=?";
+		try{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, no);
+			rs = psmt.executeQuery();
+			if(rs.next()){
+				dto = new BookDTO();
+				dto.setBook_no(rs.getInt(1));
+				dto.setBook_title(rs.getString(2));
+				dto.setBook_writer(rs.getString(3));
+				dto.setBook_shape(rs.getString(4));
+				dto.setBook_trans(rs.getString(5));
+				dto.setBook_isbn(rs.getString(6));
+				dto.setBook_pubplace(rs.getString(7));
+				dto.setBook_pubdate(rs.getString(8));
+				dto.setBook_type(rs.getString(9));
+				dto.setBook_mark(rs.getString(10));
+				dto.setBook_pubmatter(rs.getString(11));
+				dto.setBook_abstract(rs.getString(12));
+				dto.setBook_img(rs.getString(13));
+				dto.setBook_regidate(rs.getDate(14).toString());
+			}//if
+		}//try
+		catch(Exception e){ e.printStackTrace(); }//catch
+		
+		return dto;
+	}//selectOne
 
 }

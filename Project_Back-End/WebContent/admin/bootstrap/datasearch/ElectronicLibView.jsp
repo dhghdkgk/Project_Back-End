@@ -19,10 +19,10 @@
 	<!-- 고정된 네비바 -->
 	<jsp:include page="/admin/bootstrap/template/top.jsp"></jsp:include>
 	<!-- 고정 네비바 끝 -->
-	
+
 	<script>
-		function regist(){
-			$("#frm").submit();
+		function edit(no){
+			location.href = "<c:url value='/ElectronicLib/Edit.do?no="+no+"' />";
 		}
 		function list(){
 			history.back();
@@ -46,87 +46,70 @@
 		<!-- 아래의 실제 내용 표시 -->
 		<div>
 			<div class="col-md-6">
-				<form id="frm" action="ElectronicLibOk.jsp" method="post">
-					<table class="table table-striped">
-						<tr>
-							<td style="width:20%">제목</td>
-							<td><input type="text" name="title"></td>
-						</tr>
-						<tr>
-							<td>저자</td>
-							<td><input type="text" name="writer"></td>
-						</tr>
-						<tr>
-							<td>형태사항</td>
-							<td><input type="text" name="shape"></td>
-						</tr>
-						<tr>
-							<td>책임표시사항</td>
-							<td><input type="text" name="trans"></td>
-						</tr>
-						<tr>
-							<td>ISBN</td>
-							<td><input type="text" name="isbn"></td>
-						</tr>
-						<tr>
-							<td>발행처</td>
-							<td><input type="text" name="pubplace"></td>
-						</tr>
-						<tr>
-							<td>발행일</td>
-							<td><input type="text" name="pubdate"></td>
-						</tr>
-						<tr>
-							<td>분류</td>
-							<td>
-								<select name="type">
-									<option value="과학">과학</option>
-									<option value="정치">정치</option>
-									<option value="경제">경제</option>
-									<option value="철학">철학</option>
-									<option value="문학">문학</option>
-									<option value="역사">역사</option>
-									<option value="사회">사회</option>
-									<option value="복지">복지</option>
-									<option value="예술">예술</option>
-									<option value="문화">문화</option>
-									<option value="법학">법학</option>
-									<option value="경영">경영</option>
-									<option value="인문">인문</option>
-									<option value="언론">언론</option>
-									<option value="교육">교육</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>청구기호</td>
-							<td><input type="text" name="mark"></td>
-						</tr>
-						<tr>
-							<td>발행사항</td>
-							<td><input type="text" name="pybmatter"></td>
-						</tr>
-						<tr>
-							<td>초록</td>
-							<td><input type="text" name="abstract"></td>
-						</tr>
-						<tr>
-							<td>목차</td>
-							<td><input type="text" name="book_list"></td>
-						</tr>
-						<tr>
-							<td>서평</td>
-							<td><textarea id="recommend" rows="" cols=""></textarea></td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<a class="btn btn-sm btn-info" href="javascript:regist()">등록</a>
-								<input type="reset" class="btn btn-sm btn-info" value="취소">
-								<a class="btn btn-sm btn-info" href="javascript:list()">목록</a>
-							</td>
-						</tr>
-					</table>
-				</form>
+				<table class="table table-striped">
+					<tr>
+						<td>표지</td>
+						<td><img src="<c:url value='/Upload/Book/${dto.book_img }' />" style="width:60px; height:80px;"></td>
+					</tr>
+					<tr>
+						<td style="width: 20%">제목</td>
+						<td>${dto.book_title }</td>
+					</tr>
+					<tr>
+						<td>저자</td>
+						<td>${dto.book_writer }</td>
+					</tr>
+					<tr>
+						<td>형태사항</td>
+						<td>${dto.book_shape }</td>
+					</tr>
+					<tr>
+						<td>책임표시사항</td>
+						<td>${dto.book_trans }</td>
+					</tr>
+					<tr>
+						<td>ISBN</td>
+						<td>${dto.book_isbn }</td>
+					</tr>
+					<tr>
+						<td>발행처</td>
+						<td>${dto.book_pubplace }</td>
+					</tr>
+					<tr>
+						<td>발행일</td>
+						<td>${dto.book_pubdate }</td>
+					</tr>
+					<tr>
+						<td>분류</td>
+						<td>${dto.book_type }</td>
+					</tr>
+					<tr>
+						<td>청구기호</td>
+						<td>${dto.book_mark }</td>
+					</tr>
+					<tr>
+						<td>발행사항</td>
+						<td>${dto.book_pubmatter }</td>
+					</tr>
+					<tr>
+						<td>초록</td>
+						<td>${dto.book_abstract }</td>
+					</tr>
+					<tr>
+						<td>목차</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>서평</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a class="btn btn-sm btn-info" href="javascript:edit(${dto.book_no })">수정</a>
+							<a class="btn btn-sm btn-info" href="javascript:list()">목록</a>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 
